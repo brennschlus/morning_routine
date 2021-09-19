@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morning_routine/controllers/task_controller.dart';
 import 'package:morning_routine/widgets/task.dart';
+import 'package:morning_routine/constants.dart';
 
 Future<dynamic> modalBottomSheet(BuildContext context) {
   // since TaskController already initalise in home_screen.dart
@@ -17,7 +18,7 @@ Future<dynamic> modalBottomSheet(BuildContext context) {
           child: Column(
             children: [
               Text(
-                'What you gonna do?',
+                kNewTaskTitle.tr,
                 style: TextStyle(fontSize: 36),
               ),
               TextFormField(
@@ -35,7 +36,7 @@ Future<dynamic> modalBottomSheet(BuildContext context) {
                   Navigator.pop(context);
                 },
                 child: Container(
-                  child: Text('Done'),
+                  child: Text(kNewTaskButton.tr),
                 ),
               )
             ],

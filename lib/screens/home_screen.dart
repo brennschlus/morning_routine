@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:morning_routine/controllers/task_controller.dart';
+import 'package:morning_routine/widgets/language_choose_dialoge.dart';
 import 'package:morning_routine/widgets/modal_bottomsheet.dart';
+import 'package:morning_routine/widgets/bottom_bar.dart';
+import 'package:morning_routine/constants.dart';
+
+final weekDay = DateTime.now().weekday;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,13 +21,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomBar('home'),
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
-          onPressed: null,
-          icon: Icon(Icons.menu),
+          onPressed: () {
+            myMaterialDialog(context);
+          },
+          icon: Icon(Icons.language),
         ),
-        title: Text('Monday Morning'),
+        title: Text('Good ${kWeekDays[weekDay]}'),
         actions: [
           IconButton(
             onPressed: null,
