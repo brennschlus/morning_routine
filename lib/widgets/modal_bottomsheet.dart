@@ -7,7 +7,7 @@ import 'package:morning_routine/constants.dart';
 Future<dynamic> modalBottomSheet(BuildContext context) {
   // since TaskController already initalise in home_screen.dart
   // there are no need to initialise it second time
-  final TaskController _controller = Get.find();
+  final TaskController taskController = Get.find();
 
   TextEditingController textEditingController = TextEditingController();
   return showModalBottomSheet(
@@ -18,7 +18,7 @@ Future<dynamic> modalBottomSheet(BuildContext context) {
           child: Column(
             children: [
               Text(
-                kNewTaskTitle.tr,
+                newTaskTitle.tr,
                 style: TextStyle(fontSize: 36),
               ),
               TextFormField(
@@ -28,7 +28,7 @@ Future<dynamic> modalBottomSheet(BuildContext context) {
               ),
               ElevatedButton(
                 onPressed: () {
-                  _controller.tasks.add(
+                  taskController.tasks.add(
                     Task(
                       text: textEditingController.text,
                     ),
@@ -36,7 +36,7 @@ Future<dynamic> modalBottomSheet(BuildContext context) {
                   Navigator.pop(context);
                 },
                 child: Container(
-                  child: Text(kNewTaskButton.tr),
+                  child: Text(newTaskButton.tr),
                 ),
               )
             ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:morning_routine/controllers/language_controller.dart';
 import 'package:morning_routine/controllers/task_controller.dart';
 import 'package:morning_routine/widgets/language_choose_dialoge.dart';
 import 'package:morning_routine/widgets/modal_bottomsheet.dart';
@@ -7,6 +8,21 @@ import 'package:morning_routine/widgets/bottom_bar.dart';
 import 'package:morning_routine/constants.dart';
 
 final weekDay = DateTime.now().weekday;
+final hour = DateTime.now().hour;
+
+// TODO move this function away
+
+String dayTime() {
+  if (hour >= 0 && hour < 6) {
+    return perioOfDay[0];
+  } else if (hour >= 6 && hour < 12) {
+    return perioOfDay[1];
+  } else if (hour >= 12 && hour < 18) {
+    return perioOfDay[2];
+  } else {
+    return perioOfDay[3];
+  }
+}
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,7 +32,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final TaskController _controller = Get.put(TaskController());
+  final TaskController taskController = Get.put(TaskController());
+  final LanguageController languageController = Get.put(LanguageController());
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           icon: Icon(Icons.language),
         ),
-        title: Text('Good ${kWeekDays[weekDay]}'),
+        title: Text('${dayTime()} ${kWeekDays[weekDay]}'),
         actions: [
           IconButton(
             onPressed: null,
@@ -62,15 +79,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context, index) => Dismissible(
                           key: UniqueKey(),
                           onDismissed: (_) {
-                            var removed = _controller.tasks[index];
-                            _controller.tasks.removeAt(index);
+                            var removed = taskController.tasks[index];
+                            taskController.tasks.removeAt(index);
                             Get.snackbar('Task removed',
                                 'The task ${removed.text} was removed');
                           },
                           child: ListTile(
                             title: Text(
-                              _controller.tasks[index].text,
-                              style: (_controller.tasks[index].done)
+                              taskController.tasks[index].text,
+                              style: (taskController.tasks[index].done)
                                   ? TextStyle(
                                       color: Colors.red,
                                       decoration: TextDecoration.lineThrough)
@@ -78,17 +95,17 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             onTap: () {},
                             trailing: Checkbox(
-                              value: _controller.tasks[index].done,
+                              value: taskController.tasks[index].done,
                               onChanged: (value) {
-                                var changed = _controller.tasks[index];
+                                var changed = taskController.tasks[index];
                                 changed.done = value as bool;
-                                _controller.tasks[index] = changed;
+                                taskController.tasks[index] = changed;
                               },
                             ),
                           ),
                         ),
                     separatorBuilder: (_, __) => Divider(),
-                    itemCount: _controller.tasks.length),
+                    itemCount: taskController.tasks.length),
               ),
             ),
           )

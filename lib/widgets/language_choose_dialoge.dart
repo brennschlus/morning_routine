@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:morning_routine/constants.dart';
+import 'package:morning_routine/controllers/language_controller.dart';
 
 Future<dynamic> myMaterialDialog(BuildContext context) {
-  // final List locale = [
-  //   {'name': 'ENGLISH', 'locale': Locale('en', 'US')},
-  //   {'name': 'RUSSIAN', 'locale': Locale('ru', 'RU')},
-  // ];
-  // updateLanguage(Locale locale) {
-  //   Get.back();
-  //   Get.updateLocale(locale);
-  // }
+  final LanguageController languageController = Get.find();
 
   return showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Change language'),
+          title: Text(chooseLanguage.tr),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -23,17 +18,17 @@ Future<dynamic> myMaterialDialog(BuildContext context) {
                 onPressed: () {
                   Get.back();
                   Get.updateLocale(Locale('en', 'US'));
-                  print(Get.locale);
+                  languageController.saveLocale(['en', 'US']);
                 },
-                child: Text('English'),
+                child: Text(englishLanguage.tr),
               ),
               TextButton(
                 onPressed: () {
                   Get.back();
                   Get.updateLocale(Locale('ru', 'RU'));
-                  print(Get.locale);
+                  languageController.saveLocale(['ru', 'RU']);
                 },
-                child: Text('Russian'),
+                child: Text(russianLanguage.tr),
               ),
             ],
           ),
