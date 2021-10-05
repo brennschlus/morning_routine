@@ -12,7 +12,10 @@ class LanguageController extends GetxController {
 
   List readSavedLocale() {
     var savedLocale = languageController.read('savedLocale');
-    return savedLocale;
+    if (savedLocale != null) {
+      return savedLocale;
+    } else
+      return savedLocale = ['en', 'US'];
   }
 
   @override

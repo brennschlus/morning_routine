@@ -1,6 +1,6 @@
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
-final Map<int, String> kWeekDays = {
+final Map<int, String> weekDays = {
   1: monday.tr,
   2: tuesday.tr,
   3: wednesday.tr,

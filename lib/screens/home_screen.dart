@@ -33,6 +33,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TaskController taskController = Get.put(TaskController());
+
   final LanguageController languageController = Get.put(LanguageController());
 
   @override
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           icon: Icon(Icons.language),
         ),
-        title: Text('${dayTime()} ${kWeekDays[weekDay]}'),
+        title: Text('${dayTime()} ${weekDays[weekDay]}'),
         actions: [
           IconButton(
             onPressed: null,

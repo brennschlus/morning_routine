@@ -1,26 +1,13 @@
-# morning_routine
-<<<<<<< HEAD
-<<<<<<< HEAD
-Morining Routine mobile flutter app
-=======
-=======
->>>>>>> 2ad4d82 (First commit)
+# Mourning routine 
+App for creation habbits for mourning routine and tracking them
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-<<<<<<< HEAD
->>>>>>> 2ad4d82 (First commit)
-=======
->>>>>>> 2ad4d82 (First commit)
+# Requirements
+* Flutter SDK
+* Android toolchain 
+# Build 
+```console
+git clone git@github.com:brennschlus/morning_routine.git
+cd morning_routine
+flutter docotor
+flutter buld apk
+```

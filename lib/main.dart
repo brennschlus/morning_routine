@@ -3,10 +3,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:morning_routine/controllers/language_controller.dart';
 import 'package:morning_routine/screens/home_screen.dart';
 import 'package:get/get.dart';
+import 'package:morning_routine/screens/new_routine.dart';
 import 'localisation.dart';
-
-final LanguageController languageController = Get.put(LanguageController());
-final myLocal = LanguageController().readSavedLocale();
 
 void main() async {
   await GetStorage.init();
@@ -14,15 +12,15 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  final myLocal = LanguageController().readSavedLocale();
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       translations: LocaleString(),
-      locale: myLocal.isNotEmpty
-          ? Locale(myLocal[0], myLocal[1])
-          : Locale('en', 'US'),
+      locale: Locale(myLocal[0], myLocal[1]),
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: NewRoutine(),
     );
   }
 }
