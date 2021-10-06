@@ -1,13 +1,25 @@
 # Mourning routine 
-App for creation habbits for mourning routine and tracking them
+App for creation habits for mourning routine and tracking them
 
 # Requirements
-* Flutter SDK
-* Android toolchain 
-# Build 
+
+
+* [Flutter SDK](https://flutter.dev/docs/get-started/install)
+* [Android Studio](https://developer.android.com/studio)
+
+
+# Build
+Check flutter status
 ```console
-git clone git@github.com:brennschlus/morning_routine.git
-cd morning_routine
-flutter docotor
-flutter buld apk
+flutter doctor
 ```
+Get dependencies from pubspec.yaml
+```console
+flutter pub get
+```
+Build apk
+```console
+
+flutter build apk
+```
+After building apk should be found in /build/outputs/apk/release
